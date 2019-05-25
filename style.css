@@ -1,0 +1,55 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.day{
+    background: rgb(143, 180, 248);
+    height: 90px;
+    width: 200px;
+    margin: auto;
+    display: grid;
+    border-radius: 10px;
+}
+
+.day h3{ 
+    color: rgb(63, 73, 63);
+    margin: auto;
+}
+
+.text{ 
+    color: rgb(106, 143, 106);
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 23px 30px;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+.text input{
+    border: none;
+    text-align: center;
+    width: 75px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+.text h3{
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Removes spin and clear buttons*/
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-clear-button,
+.quantity::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.quantity:focus{
+    outline: none;
+}
