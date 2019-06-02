@@ -86,41 +86,50 @@ document.getElementById('end1').value='15:00';
 
 
 function refresh(){
+    
 
-    let totalHours=0;
-    let totalMinutes=0;
+    for(let j=0;j<5;j++){
+        let totalHours=0;
+        let totalMinutes=0;
+        for(let i=1+(6*j);i<6+(7*j);i++){
+            if(i==31){
+                break;
+            }
+            console.log(i);
+            let start=document.getElementById('start'+i).value;
+            let end=document.getElementById('end'+i).value;
 
-    for(let i=1;i<6;i++){
-        let start=document.getElementById('start'+i).value;
-        let end=document.getElementById('end'+i).value;
+            let hoursStart=start.slice(0,2);
+            let minutesStart=start.slice(3,5);
 
-        let hoursStart=start.slice(0,2);
-        let minutesStart=start.slice(3,5);
+            let hoursEnd=end.slice(0,2);
+            let minutesEnd=end.slice(3,5);
+            
+            let hoursWorked=hoursEnd-hoursStart;
+            let minutesWorked=minutesEnd-minutesStart;
 
-        let hoursEnd=end.slice(0,2);
-        let minutesEnd=end.slice(3,5);
-        
-        let hoursWorked=hoursEnd-hoursStart;
-        let minutesWorked=minutesEnd-minutesStart;
-
-        if(minutesWorked<0){
-            hoursWorked--;
-            minutesWorked=60+minutesWorked;
+            if(minutesWorked<0){
+                hoursWorked--;
+                minutesWorked=60+minutesWorked;
+            }
+            totalHours+=hoursWorked;
+            totalMinutes+=minutesWorked;
+            
         }
-        totalHours+=hoursWorked;
-        totalMinutes+=minutesWorked;
-    }
-    if(totalMinutes>=60){
-        totalHours+=Math.floor(totalMinutes/60);
-        totalMinutes=totalMinutes%60;
-    }
+        if(totalMinutes>=60){
+            totalHours+=Math.floor(totalMinutes/60);
+            totalMinutes=totalMinutes%60;
+        }
 
-    if(totalMinutes==0){
-        totalMinutes='00';
+        if(totalMinutes==0){
+            totalMinutes='00';
+        }
+        if(totalHours==0 && totalMinutes == 0){
+            continue;
+        }
+        document.getElementById('week'+j).textContent=totalHours+':'+totalMinutes+'H';
+        console.log('Hours: '+totalHours+' Minutes: '+totalMinutes);
     }
-
-    document.getElementById('week0').textContent=totalHours+':'+totalMinutes+'H';
-    console.log('Hours: '+totalHours+' Minutes: '+totalMinutes);
 }
 
 // Copy Week
@@ -139,7 +148,7 @@ let week2=document.getElementById('weekq1');
 week2.addEventListener('click',function(){
         for(var i=7;i<12;i++){
             document.getElementById('start'+i).value = document.getElementById('start1').value;
-            document.getElementById('end'+i).value = document.getElementById('end1').value;;
+            document.getElementById('end'+i).value = document.getElementById('end1').value;
     }
     
 })
@@ -149,7 +158,17 @@ let week3=document.getElementById('weekq2');
 week3.addEventListener('click',function(){
         for(var i=14;i<19;i++){
             document.getElementById('start'+i).value = document.getElementById('start1').value;
-            document.getElementById('end'+i).value = document.getElementById('end1').value;;
+            document.getElementById('end'+i).value = document.getElementById('end1').value;
+    }
+    
+})
+
+let week4=document.getElementById('weekq3');
+
+week4.addEventListener('click',function(){
+        for(var i=21;i<26;i++){
+            document.getElementById('start'+i).value = document.getElementById('start1').value;
+            document.getElementById('end'+i).value = document.getElementById('end1').value;
     }
     
 })
